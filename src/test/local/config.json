@@ -1,0 +1,19 @@
+{
+	"port" : 4711,
+	"user":"amfabe2",
+	"password":"dikafe",
+	"codesend" : "/Users/dirkschumacher/progging/projects/FunksteckerSteuerung/src/test/local/dummy-codesend.sh",
+	"sendrepeats" : 10,
+	"switches" : {
+		"WZ-amSessel":{
+			"code-0": 1361,
+			"code-1": 1364,
+			"image":"abc"
+		},
+		"WZ-LampeFenster":{
+			"code-0": 1361,
+			"code-1": 1364,
+			"image":"abc"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+<assembly>
+  <!-- Ruch Seller, answered Aug 26 '09 at 14:28: http://stackoverflow.com/questions/1334999/is-it-possible-to-rename-a-maven-jar-with-dependencies -->
+  <id>${project.version}</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <unpack>true</unpack>
+      <scope>runtime</scope>
+    </dependencySet>
+  </dependencySets>
+  <fileSets>
+    <fileSet>
+      <directory>${project.build.outputDirectory}</directory>
+    </fileSet>
+  </fileSets>
+</assembly>

@@ -1,0 +1,28 @@
+body {
+	background-color: black;
+}
+
+div#buttons {
+	text-align: center;
+}
+
+div#buttons h1 {
+	background-color: silver;
+	padding: 5px;
+}
+
+div#buttons button {
+	width: 48%;
+	margin: 0 10;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+
+div#buttons button.on {
+	background-color: green;
+}
+
+div#buttons button.off {
+	background-color: red;
+}

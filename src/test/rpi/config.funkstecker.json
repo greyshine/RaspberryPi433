@@ -1,0 +1,19 @@
+{
+	"port" : 4711,
+	"user":"amfabe2",
+	"password":"dikafe",
+	"codesend" : "/opt/433Utils/RPi_utils/codesend",
+	"sendrepeats" : 4,
+	"switches" : {
+		"WZ-amSessel":{
+			"code-0": 1361,
+			"code-1": 1364,
+			"image":"abc"
+		},
+		"WZ-LampeFenster":{
+			"code-0": 1361,
+			"code-1": 1364,
+			"image":"abc"
+		}
+	}
+}
