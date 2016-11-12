@@ -3,17 +3,15 @@
 	"user":"amfabe2",
 	"password":"dikafe",
 	"codesend" : "/Users/dirkschumacher/progging/projects/FunksteckerSteuerung/src/test/local/dummy-codesend.sh",
-	"sendrepeats" : 10,
+	"sendrepeats": 10,
 	"switches" : {
 		"WZ-amSessel":{
 			"code-0": 1361,
-			"code-1": 1364,
-			"image":"abc"
+			"code-1": 1364
 		},
 		"WZ-LampeFenster":{
-			"code-0": 1361,
-			"code-1": 1364,
-			"image":"abc"
+			"code-0": 1543,
+			"code-1": 1547
 		}
 	}
 }
