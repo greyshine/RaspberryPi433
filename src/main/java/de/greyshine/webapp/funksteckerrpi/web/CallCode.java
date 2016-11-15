@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonObject;
 
 import de.greyshine.webapp.funksteckerrpi.Configuration;
 import de.greyshine.webapp.funksteckerrpi.HttpUtils;
+import de.greyshine.webapp.funksteckerrpi.Switch.Code;
 import de.greyshine.webapp.funksteckerrpi.Utils;
 
 @WebServlet( urlPatterns={"/code/*"} )
@@ -34,9 +35,9 @@ public class CallCode extends HttpServlet {
 		final Configuration c = Configuration.get( req );
 		
 		// substring due to "/code/".length() = 6
-		String theCode = req.getRequestURI().substring( 6 );
+		String theCodeId = req.getRequestURI().substring( 6 );
 		
-		theCode = c.getCodeForId( theCode );
+		Code theCode = c.getCodeForId( theCodeId );
 		
 		if ( theCode == null ) {
 			
@@ -57,7 +58,7 @@ public class CallCode extends HttpServlet {
 			
 			for( int i=0, l=repeats; i < l; i++ ) {
 				
-				Utils.console(null, sout, serr, theCommandDir, "./"+ theCommand, theCode);
+				Utils.console(null, sout, serr, theCommandDir, "./"+ theCommand, ""+theCode.code);
 				
 				if ( i < l-1 ) {
 					
@@ -77,10 +78,14 @@ public class CallCode extends HttpServlet {
 		
 		} else {
 			
-			System.out.println( "> handled: "+ theCode +"; repeats="+ repeats );
+			System.out.println( "> handled: "+ theCode.code +"; repeats="+ repeats );
 		}
 		
-		HttpUtils.respond( resp , 200, new JsonPrimitive( theCode ));
+		JsonObject theJo = new JsonObject();
+		theJo.addProperty( "message" , theCode.getStateName() + " "+ Utils.formatDate( "HH:mm:ss, dd.MM.yy" ));
+		theJo.addProperty( "code" , theCodeId);
+		
+		HttpUtils.respond( resp , 200, theJo);
 	}
 
 
@@ -90,11 +95,10 @@ public class CallCode extends HttpServlet {
 		final Configuration c = (Configuration) getServletContext().getAttribute( Configuration.SERVLET_CONTEXT_KEY );
 		return new File( c.getCodeSendCommand() ).getName();
 	}
+	
 	private File getCommandDir() {
 		final Configuration c = (Configuration) getServletContext().getAttribute( Configuration.SERVLET_CONTEXT_KEY );
 		return new File( c.getCodeSendCommand() ).getParentFile();
 	}
-
-	
 	
 }

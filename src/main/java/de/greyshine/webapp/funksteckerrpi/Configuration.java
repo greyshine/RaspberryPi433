@@ -1,7 +1,6 @@
 package de.greyshine.webapp.funksteckerrpi;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -9,24 +8,37 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.impl.StdSchedulerFactory;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
+import de.greyshine.webapp.funksteckerrpi.Switch.Code;
 import de.greyshine.webapp.funksteckerrpi.Utils.Kvp;
 
 public class Configuration {
 	
 	public static final String SERVLET_CONTEXT_KEY = Configuration.class.getCanonicalName();
 	
+	final Scheduler scheduler;
+	
 	final File file;
 	final JsonObject json;
 	
 	Map<String,Switch> switches = new LinkedHashMap<>(1);
 	Map<String,Switch.Code> codes = new HashMap<>(1);
+	public Map<Switch,String> lastState = new LinkedHashMap<>(1);
 	
-	public Configuration( File inFile ) throws IOException {
+	public Configuration( File inFile ) throws Exception {
+		
+		scheduler = StdSchedulerFactory.getDefaultScheduler();
+		
+		
+		
 		
 		file = inFile;
 		json = Utils.readJsonObject( inFile );
@@ -41,9 +53,16 @@ public class Configuration {
 			codes.put( s.off.id , s.off);
 			
 		});
-		
+
+		createJobs();
 	}
 	
+	private void createJobs() throws SchedulerException {
+		
+		
+		
+	}
+
 	public int getPort() {
 		return json.get("port").getAsInt();
 	}
@@ -80,15 +99,8 @@ public class Configuration {
 		return switches.values();
 	}
 
-	 public String getCodeForId(String inCodeId) {
-		
-		 try {
-			
-			 return ""+codes.get( inCodeId ).code;
-			 
-		} catch (Exception e) {
-			return null;
-		}
+	 public Code getCodeForId(String inCodeId) {
+		 return codes.get( inCodeId );
 	}
 
 	 public JsonObject getStatus() {

@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
@@ -473,8 +475,14 @@ public abstract class Utils {
 			
 			ttw = cont - System.currentTimeMillis();
 		}
-		
-		
+	}
+	
+	public static String formatDate(String inFormat, Date inDate) {
+		return new SimpleDateFormat(inFormat).format(inDate);
+	}
+	
+	public static String formatDate(String inFormat) {
+		return formatDate( inFormat, new Date() );
 	}
 	
 }

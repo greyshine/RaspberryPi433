@@ -7,11 +7,22 @@
 	"switches" : {
 		"WZ-amSessel":{
 			"code-0": 1361,
-			"code-1": 1364
+			"code-1": 1364,
+			"cron-0":[],
+			"cron-1":[]
 		},
 		"WZ-LampeFenster":{
-			"code-0": 1543,
-			"code-1": 1547
+			"code-0": 4433,
+			"code-1": 4436,
+			"cron-0":[],
+			"cron-1":[]
+		},
+		"WZ-Stehlampe":{
+			"code-0": 5201,
+			"code-1": 5204,
+			"cron-0":[],
+			"cron-1":[]
 		}
 	}
+	
 }

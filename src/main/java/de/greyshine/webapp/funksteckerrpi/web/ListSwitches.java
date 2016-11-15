@@ -29,7 +29,8 @@ public class ListSwitches extends HttpServlet {
 		for( Switch s : c.getSwitches() ) {
 			
 			JsonObject sjo = new JsonObject();
-			jo.add( s.name, sjo);
+			jo.add( s.id, sjo);
+			sjo.addProperty( "id" , s.id);
 			sjo.addProperty( "name" , s.name);
 			sjo.addProperty( "code-1" , s.on.code);
 			sjo.addProperty( "code-1-id" , s.on.id);

@@ -1,3 +1,7 @@
+.bgYellow {
+	background-color: yellow !important;
+}
+
 body {
 	background-color: black;
 }

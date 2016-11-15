@@ -2,6 +2,7 @@ package de.greyshine.webapp.funksteckerrpi;
 
 import java.util.UUID;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class Switch {
@@ -15,7 +16,7 @@ public class Switch {
 
 	private static int ids = 0; 
 	
-	final String id = ""+ids++;
+	public final String id = ""+ids++;
 	
 	public final String name; 
 	
@@ -31,6 +32,10 @@ public class Switch {
 		}
 		public String id = Switch.this.id +"-"+UUID.randomUUID();
 		public int code;
+		
+		public String getStateName() {
+			return this == Switch.this.on ? "on" : "off";
+		}
 	}
 	
 	
