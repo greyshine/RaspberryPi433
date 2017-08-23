@@ -53,4 +53,6 @@ That makes is actually a 433Mhz codesending application.
 
 # Raspberry cable connection to sender FS1000A
 
-<img src="http://www.imageno.com/image.php?id=kx8me22654wb&kk=3597610361" />
+<img src="http://www.imageno.com/thumbs/20170823/kx8me22654wb.jpg" />
+
+http://www.imageno.com/image.php?id=kx8me22654wb&kk=3597610361
